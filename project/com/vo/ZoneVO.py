@@ -16,5 +16,3 @@ class ZoneVO(db.Model):
 
 
 db.create_all()
-
-
