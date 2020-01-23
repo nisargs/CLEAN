@@ -36,4 +36,3 @@ class ZoneDAO:
         db.session.merge(zoneVO)
 
         db.session.commit()
-
