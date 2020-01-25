@@ -42,14 +42,14 @@ def adminSearchUser():
 #     return render_template("admin/viewStaffHead.html")
 
 
-@app.route('/admin/loadDataset')
-def adminLoadDataset():
-    return render_template("admin/addDataset.html")
-
-
-@app.route('/admin/searchDataset')
-def adminSearchDataset():
-    return render_template("admin/viewDataset.html")
+# @app.route('/admin/loadDataset')
+# def adminLoadDataset():
+#     return render_template("admin/addDataset.html")
+#
+#
+# @app.route('/admin/searchDataset')
+# def adminSearchDataset():
+#     return render_template("admin/viewDataset.html")
 
 
 # @app.route('/admin/searchImages')
