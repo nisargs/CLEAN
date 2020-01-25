@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Datatables - Zeiss Template</title>
+	<title>CLEAN</title>
 
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
@@ -258,18 +258,21 @@
 						<thead>
 							<tr>
 								<th>File Name</th>
-								<th>File Path</th>
-								<th>File Location</th>
+                                <th>Upload Date</th>
+                                <th>Upload Time</th>
                                 <th>Action</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<td>img.jpg</td>
-                            <td>/Desktop/Clean/img.jpg</td>
-                            <td>45.451580 10.568110</td>
-                            <td><a href="">Detection</a> / <a href="">Delete</a></td>
-
+                            {% for row in datasetVOList %}
+                                <tr>
+                                    <td>{{row['datasetFilename']}}</td>
+                                    <td>{{row['datasetUploaddate']}}</td>
+                                    <td>{{row['datasetUploadtime']}}</td>
+                                    <td><a href="{{row['datasetFilepath']}}{{row['datasetFilename']}}" style="height:200px;width:200px;">View</a> / <a href="/admin/deleteDataset?datasetId={{row['datasetId']}}">Delete</a></td>
+                                </tr>
+                            {% endfor %}
 						</tbody>
 					</table>
 				</div>
