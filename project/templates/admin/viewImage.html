@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CLEAN - View Complain</title>
+    <title>CLEAN - View Image</title>
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
@@ -46,7 +46,8 @@
         <div class="row small-spacing">
             <div class="col-12">
                 <div class="box-content">
-                    <h4 class="box-title">View Complain</h4>
+                    <h4 class="box-title">View File</h4>
+                    <!-- /.box-title -->
                     <div class="dropdown js__drop_down">
                         <a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
                         <ul class="sub-menu">
@@ -56,44 +57,46 @@
                             <li class="split"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>
+                        <!-- /.sub-menu -->
                     </div>
                     <table id="example" class="table table-striped table-bordered display" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Complain Subject</th>
-                            <th>Complain Description</th>
-                            <th>Complain Date</th>
-                            <th>Complain Time</th>
-                            <th>Complain Status</th>
-                            <th>Complain Attachment</th>
-                            <th>Reply Attachment</th>
+                            <th>User Name</th>
+                            <th>Zone Name</th>
+                            <th>Ward Name</th>
+                            <th>Input ImageName</th>
+                            <th>Output ImageName</th>
+                            <th>Upload Date</th>
+                            <th>Upload Time</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
+
                         <tbody>
-                        {% for row in complainVOList %}
+                        {% for row in imageVOList %}
                             <tr>
-                                <td>{{ row[1]['loginUsername'] }}</td>
-                                <td>{{ row[0]['complainSubject'] }}</td>
-                                <td>{{ row[0]['complainDescription'] }}</td>
-                                <td>{{ row[0]['complainDate'] }}</td>
-                                <td>{{ row[0]['complainTime'] }}</td>
-                                <td>{{ row[0]['complainStatus'] }}</td>
-                                <td><a href="{{ row[0]['complainFilepath'] }}{{ row[0]['complainFilename'] }}"
-                                       style="height:200px;width:200px;" target="_blank">View</a></td>
-                                <td><a href="/admin/loadComplainReply?complainId={{ row[0]['complainId'] }}">Reply</a>
-                                </td>
+                                <td>{{ row[3]['loginUsername'] }}</td>
+                                <td>{{ row[2]['zoneName'] }}</td>
+                                <td>{{ row[1]['wardName'] }}</td>
+                                <td>{{ row[0]['imageInputFileName'] }}</td>
+                                <td>{{ row[0]['imageOutputFileName'] }}</td>
+                                <td>{{ row[0]['imageUploadDate'] }}</td>
+                                <td>{{ row[0]['imageUploadTime'] }}</td>
+                                <td><a href="{{ row[0]['imageInputFilePath'] }}{{ row[0]['imageInputFileName'] }}"
+                                       style="height:200px;width:200px;" target="_blank">InputImage</a> /
+                                    <a href="{{ row[0]['imageOutputFilePath'] }}{{ row[0]['imageOutputFileName'] }}"
+                                       style="height:200px;width:200px;" target="_blank">OutputImage</a>
                             </tr>
                         {% endfor %}
-
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-        {% include 'admin/footer.html' %}
-    </div>
 
+        </div>
+        {% include 'user/footer.html' %}
+    </div>
 </div>
 <script src="../../static/adminResource/js/html5shiv.min.js"></script>
 <script src="../../static/adminResource/js/respond.min.js"></script>

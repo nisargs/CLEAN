@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CLEAN - Edit Ward</title>
+    <title>CLEAN - Complain Reply</title>
 
     <!-- Main Styles -->
     <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
@@ -41,52 +41,40 @@
         <div class="row small-spacing">
             <div class="col-12">
                 <div class="box-content">
-                    <h4 class="box-title">Update Ward</h4>
+                    <h4 class="box-title">Add Reply</h4>
                     <hr>
-                    <form data-toggle="validator" action="/admin/updateWard" method="post">
-
-
+                    <form data-toggle="validator" action="/admin/insertComplainReply" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="complainId" value={{ complainId }}>
                         <div class="form-group">
-
-                            <label class="form-label">Select State</label>
-                            <select class="form-control" name="ward_ZoneId">
-                                <option>Select Zone</option>
-                                {% for row1 in zoneVOList %}
-                                    <option value="{{ row1['zoneId'] }}">{{ row1['zoneName'] }}</option>
-                                {% endfor %}
-                            </select>
-
+                            <label for="inputName" class="control-label">Reply Subject</label>
+                            <input type="text" class="form-control" id="inputName"
+                                   name="replySubject">
                         </div>
-
-                        {% for row in wardVOList %}
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" id="inputName" name="wardId"
-                                       value="{{ row['wardId'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">Ward Name </label>
-                                <input type="text" class="form-control" id="inputName"
-                                       name="wardName" value="{{ row['wardName'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName" class="control-label">ward Description </label>
-                                <textarea type="text" class="form-control" id="inputName"
-                                          name="wardDescription">{{ row['wardDescription'] }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
-                            </div>
-                        {% endfor %}
+                        <div class="form-group">
+                            <label for="inputName" class="control-label">Reply Message </label>
+                            <textarea type="text" class="form-control" id="inputName"
+                                      name="replyMessage"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Reply Attachment</label>
+                            <input type="file" name="replyFilename">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        </div>
                     </form>
                 </div>
                 <!-- /.box-content -->
             </div>
             <!-- /.col-12 -->
         </div>
-        <!-- /.row small-spacing -->
+
         {% include 'admin/footer.html' %}
     </div>
-</div>
+
+</div><!--/#wrapper -->
+
 <script src="../../static/adminResource/js/html5shiv.min.js"></script>
 <script src="../../static/adminResource/js/respond.min.js"></script>
 
