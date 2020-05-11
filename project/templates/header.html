@@ -1,0 +1,20 @@
+<div class="fixed-navbar">
+    <div class="float-left">
+        <button type="button" class="menu-mobile-button fas fa-bars js__menu_mobile"></button>
+        <!-- /.page-title -->
+    </div>
+    <!-- /.float-left -->
+    <div class="float-right">
+        <div class="ico-item">
+            <img src="../../static/adminResource/image/user.jpg" alt="" class="ico-img" style="max-height: 32px;">
+            <ul class="sub-ico-item">
+
+                    <li><a href="#">Welcome {{session['session_loginUsername']}}</a></li>
+                    <li><a href="/admin/logoutSession">Log Out</a></li>
+            </ul>
+            <!-- /.sub-ico-item -->
+        </div>
+        <!-- /.ico-item -->
+    </div>
+    <!-- /.float-right -->
+</div>

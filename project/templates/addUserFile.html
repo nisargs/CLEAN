@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CLEAN - USER</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+    <!-- Material Design Icon -->
+    <link rel="stylesheet" href="../../static/adminResource/css/materialdesignicons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/adminResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/adminResource/css/sweetalert.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="../../static/adminResource/css/color-switcher.min.css">
+</head>
+
+<body>
+
+{% include 'user/menu.html' %}
+
+
+{% include 'user/header.html' %}
+
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+                <div class="box-content">
+                    <h4 class="box-title">Upload File</h4>
+                    <hr>
+                    <form data-toggle="validator" enctype="multipart/form-data" method="post"
+                          action="/user/insertUserFile">
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="control-label">Upload File: </label>
+                            <input type="file" name="userfilename">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary waves-effect waves-light" value="Submit">
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+        <!-- /.row small-spacing -->
+        {% include 'user/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+
+<script src="../../static/adminResource/js/html5shiv.min.js"></script>
+<script src="../../static/adminResource/js/respond.min.js"></script>
+
+<script src="../../static/adminResource/js/jquery.min.js"></script>
+<script src="../../static/adminResource/js/modernizr.min.js"></script>
+<script src="../../static/adminResource/js/bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/adminResource/js/nprogress.js"></script>
+<script src="../../static/adminResource/js/sweetalert.min.js"></script>
+<script src="../../static/adminResource/js/waves.min.js"></script>
+<!-- Full Screen Plugin -->
+<script src="../../static/adminResource/js/jquery.fullscreen-min.js"></script>
+
+<!-- Validator -->
+<script src="../../static/adminResource/js/validator.min.js"></script>
+
+<script src="../../static/adminResource/js/main.min.js"></script>
+<script src="../../static/adminResource/js/mycommon.js"></script>
+<script src="../../static/adminResource/js/color-switcher.min.js"></script>
+</body>
+</html>

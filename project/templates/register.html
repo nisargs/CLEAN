@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>USER - Register</title>
+    <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+    <script type="text/javascript">
+        function loadWard() {
+
+            var register_ZoneId = document.getElementById("register_ZoneId");
+
+            var ward = document.getElementById("ward");
+
+            ward.innerHTML = "";
+
+            var ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function () {
+
+                if (ajax.readyState == 4) {
+
+
+                    var json = JSON.parse(ajax.responseText);
+                    alert(ajax.responseText);
+
+                    var option1 = document.createElement("option");
+
+                    option1.value = "Select Ward";
+                    option1.text = "Select Ward";
+
+                    ward.options.add(option1);
+
+                    for (var i = 0; i < json.length; i++) {
+
+                        var option = document.createElement("option");
+
+                        option.value = json[i]['wardId'];
+                        option.text = json[i]['wardName'];
+
+                        ward.options.add(option)
+                    }
+                }
+            };
+            ajax.open("get", "/admin/ajaxLoadWard?register_ZoneId=" + register_ZoneId.value, true);
+
+            ajax.send()
+        }
+
+        function registerAlert() {
+            alert("We've sent your password in the email you entered here!")
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div id="single-wrapper">
+    <form action="/user/insertRegister" class="frm-single" method="post">
+        <div class="inside">
+            <img src="../../static/adminResource/image/CLEAN%20LOGO.jpg" class="clean-logo" style="position: relative;
+    left: 31px;">
+            <hr>
+            <!-- /.title -->
+            <div class="title"><strong>Registration</strong></div>
+            <!-- /.frm-title -->
+            <div class="frm-input">
+                <label class="control-label">First Name </label>
+                <input type="text" placeholder="First Name" name="registerFirstName" class="frm-inp" required>
+            </div>
+            <div class="frm-input">
+                <label class="control-label">Last Name </label>
+                <input type="text" placeholder="Last Name" name="registerLastName" class="frm-inp" required>
+            </div>
+            <div>
+                <label class="control-label">Gender</label><br>
+                <input type="radio" class="frm-inp" name="registerGender" value="male" required>Male<br>
+                <input type="radio" class="frm-inp" name="registerGender" value="female" required>Female<br>
+            </div>
+            <br>
+            <div class="frm-input">
+                <label class="control-label">Zone Name </label>
+                <select class="form-control" name="register_ZoneId" onchange="loadWard()" required id="register_ZoneId">
+                    <option>Select Zone</option>
+                    <label class="form-label">Select Zone</label>
+                    {% for i in zoneVOList %}
+                        <option value="{{ i['zoneId'] }}">{{ i['zoneName'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            {#            <div class="frm-input">#}
+            {#                <label class="control-label">Ward Name </label>#}
+            {#                <select class="form-control" name="register_WardId" required>#}
+            {#                    <option>Select Ward</option>#}
+            {#                    {% for i in wardVOList %}#}
+            {#                        <option value="{{ i[0]['wardId'] }}">{{ i[0]['wardName'] }}</option>#}
+            {#                    {% endfor %}#}
+            {#                </select>#}
+            {#            </div>#}
+
+            <div class="frm-input">
+                <label class="control-label">Ward Name </label>
+                <select class="form-control" name="register_WardId" id="ward" required>
+                    <option>Select Ward</option>
+                </select>
+            </div>
+
+            <div class="frm-input">
+                <label class="control-label">Address </label>
+                <textarea placeholder="Address" name="registerAddress" class="frm-inp" rows="20" cols="20" required>
+                </textarea>
+            </div>
+
+            <div class="frm-input">
+                <label class="control-label">Contact </label>
+                <input type="tel" placeholder="Contact" name="registerContact" class="frm-inp" maxlength="10" required>
+            </div>
+
+            <div class="frm-input">
+                <label class="control-label">Email </label>
+                <input type="email" placeholder="Email" class="frm-inp" name="loginUsername" required>
+            </div>
+            <!-- /.clearfix -->
+            <button type="submit" class="frm-submit" onclick="registerAlert()">Register<i
+                    class="fa fa-arrow-circle-right"></i></button>
+            <!-- /.row -->
+            <a href="/" class="a-link"><i class="fa fa-sign-in"></i>Already have account? Login.</a>
+            <div class="frm-footer">CLEAN © 2020.</div>
+            <!-- /.footer -->
+        </div>
+        <!-- .inside -->
+    </form>
+    <!-- /.frm-single -->
+</div><!--/#single-wrapper -->
+
+
+<script src="../../static/adminResource/js/html5shiv.min.js"></script>
+<script src="../../static/adminResource/js/respond.min.js"></script>
+
+<script src="../../static/adminResource/js/jquery.min.js"></script>
+<script src="../../static/adminResource/js/modernizr.min.js"></script>
+<script src="../../static/adminResource/js/bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/nprogress.js"></script>
+<script src="../../static/adminResource/js/waves.min.js"></script>
+
+<script src="../../static/adminResource/js/main.min.js"></script>
+<script src="../../static/adminResource/js/mycommon.js"></script>
+</body>
+</html>
