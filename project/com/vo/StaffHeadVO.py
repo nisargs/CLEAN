@@ -1,6 +1,6 @@
 from project import db
-from project.com.vo.ZoneVO import ZoneVO
 from project.com.vo.WardVO import WardVO
+from project.com.vo.ZoneVO import ZoneVO
 
 
 class StaffHeadVO(db.Model):
@@ -11,7 +11,6 @@ class StaffHeadVO(db.Model):
     staffheadEmail = db.Column('staffheadEmail', db.String(100), nullable=False)
     staffhead_ZoneId = db.Column('staffhead_ZoneId', db.Integer, db.ForeignKey(ZoneVO.zoneId))
     staffhead_WardId = db.Column('staffhead_WardId', db.Integer, db.ForeignKey(WardVO.wardId))
-
 
     def as_dict(self):
         return {
