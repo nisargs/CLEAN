@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CLEAN - Add Complain</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+    <!-- Material Design Icon -->
+    <link rel="stylesheet" href="../../static/adminResource/css/materialdesignicons.css">
+
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="../../static/adminResource/css/jquery.mCustomScrollbar.min.css">
+
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="../../static/adminResource/css/sweetalert.css">
+
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="../../static/adminResource/css/color-switcher.min.css">
+</head>
+
+<body>
+
+{% include 'user/menu.html' %}
+
+
+{% include 'user/header.html' %}
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" style="background:#304ffe">
+                        <h4 class="text-white">Post Complain</h4>
+                    </div>
+                    <div class="card-body">
+                        <form data-toggle="validator" action="/user/insertComplain" method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Complain Subject"
+                                       name="complainSubject">
+                            </div>
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" placeholder="Enter Complain Description"
+                                          name="complainDescription"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Complain Attachment</label>
+                                <input type="file" name="complainFilename">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-12 -->
+        </div>
+
+         <div class="row">
+    <div class="col-12">
+		<div class="card">
+			<div class="card-header" style="background:#304ffe">
+			<h4 class="text-white">Complains</h4>
+			</div>
+			<div class="card-body">
+            {% for row in complainVOList %}
+				<div class="d-flex align-items-start profile-feed-item">
+					<img src="../../static/adminResource/image/user.jpg" alt="profile" class="rounded-circle mr-4" width="5%">
+					<div class="ml-4" style="width: 100%">
+						<h6>
+							{{ row['complainSubject'] }}
+							<small class="ml-4 text-muted">
+                                <a href="{{ row['complainFilepath'] }}{{ row['complainFilename'] }}" target="_blank">
+                                    <i class="mdi mdi-file mr-1"></i>
+                                </a>
+                            </small>
+							<small class="mr-4 text-muted float-right">
+                                <i class="ti-time mr-1"></i>{{ row['complainDate'] }}
+							</small>
+						</h6>
+						<p>
+							{{ row['complainDescription'] }}
+                            <a href="/user/deleteComplain?complainId={{ row['complainId'] }}">
+                                <i class="mdi mdi-delete ml-1" style="font-size: 15px;color: #ffa33d"></i>
+                            </a>
+						</p>
+					</div>
+				</div>
+
+                {% if row['complainStatus']=='Replied' %}
+                <div class="d-flex align-items-start profile-feed-item" style="margin-left: 100px">
+					<img src="../../static/adminResource/image/admin.png" alt="profile" class="rounded-circle mr-4" width="5%">
+					<div class="ml-4" style="width: 100%">
+						<h6>
+							{{ row['replySubject'] }}
+							<small class="ml-4 text-muted">
+                                <a href="{{ row['replyFilepath'] }}{{ row['replyFilename'] }}" target="_blank">
+                                    <i class="mdi mdi-file mr-1"></i>
+                                </a>
+                            </small>
+							<small class="mr-4 text-muted float-right">
+                                <i class="ti-time mr-1"></i>{{ row['replyDate'] }}
+							</small>
+						</h6>
+						<p>
+							{{ row['replyMessage'] }}
+						</p>
+					</div>
+				</div>
+                {% endif %}
+    <hr>
+{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+        <!-- /.row small-spacing -->
+        {% include 'admin/footer.html' %}
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+
+<script src="../../static/adminResource/js/html5shiv.min.js"></script>
+<script src="../../static/adminResource/js/respond.min.js"></script>
+
+<script src="../../static/adminResource/js/jquery.min.js"></script>
+<script src="../../static/adminResource/js/modernizr.min.js"></script>
+<script src="../../static/adminResource/js/bootstrap.min.js"></script>
+<script src="../../static/adminResource/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../../static/adminResource/js/nprogress.js"></script>
+<script src="../../static/adminResource/js/sweetalert.min.js"></script>
+<script src="../../static/adminResource/js/waves.min.js"></script>
+<!-- Full Screen Plugin -->
+<script src="../../static/adminResource/js/jquery.fullscreen-min.js"></script>
+
+<!-- Validator -->
+<script src="../../static/adminResource/js/validator.min.js"></script>
+
+<script src="../../static/adminResource/js/main.min.js"></script>
+<script src="../../static/adminResource/js/mycommon.js"></script>
+<script src="../../static/adminResource/js/color-switcher.min.js"></script>
+</body>
+</html>

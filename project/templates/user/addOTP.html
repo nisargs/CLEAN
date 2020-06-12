@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>CLEAN - OTP </title>
+	<link rel="stylesheet" href="../../static/adminResource/css/style.min.css">
+    <link rel="stylesheet" href="../../static/adminResource/css/custom.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="../../static/adminResource/css/waves.min.css">
+
+</head>
+
+<body>
+
+<div id="single-wrapper">
+	<form action="/admin/validateOTP" class="frm-single" method="post">
+		<div class="inside">
+			<img src="../../static/adminResource/image/CLEAN%20LOGO.jpg" class="clean-logo" style="position: relative;
+    left: 31px;">
+        <hr>
+             <div class="title"><strong>Validate OTP</strong></div>
+                <div class="form-group">
+
+                        <input type="text" name="loginOTP" class="form-control"
+                               placeholder="Enter your OTP Here">
+                </div>
+                <button type="submit" class="frm-submit">Validate OTP<i class="fa fa-arrow-circle-right"></i></button>
+
+            {% if error %}
+                        <p align="left" style="color: red"><strong>{{ error }}</strong></p>
+            {% endif %}
+
+			<div class="frm-footer">CLEAN © 2020.</div>
+
+
+			<!-- /.footer -->
+		</div>
+		<!-- .inside -->
+	</form>
+	<!-- /.frm-single -->
+</div>
+    <script src="../../static/adminResource/js/html5shiv.min.js"></script>
+    <script src="../../static/adminResource/js/respond.min.js"></script>
+
+    <script src="../../static/adminResource/js/jquery.min.js"></script>
+    <script src="../../static/adminResource/js/modernizr.min.js"></script>
+    <script src="../../static/adminResource/js/bootstrap.min.js"></script>
+    <script src="../../static/adminResource/js/nprogress.js"></script>
+    <script src="../../static/adminResource/js/waves.min.js"></script>
+
+    <script src="../../static/adminResource/js/main.min.js"></script>
+    <script src="../../static/adminResource/js/mycommon.js"></script>
+</body>
+</html>
