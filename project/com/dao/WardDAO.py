@@ -11,7 +11,6 @@ class WardDAO:
         db.session.commit()
 
     def viewWard(self):
-
         wardList = db.session.query(WardVO, ZoneVO).join(ZoneVO, WardVO.ward_ZoneId == ZoneVO.zoneId).all()
 
         return wardList
@@ -35,13 +34,19 @@ class WardDAO:
         return wardList
 
     def updateWard(self, wardVO):
-
         db.session.merge(wardVO)
 
         db.session.commit()
 
     def ajaxWardProduct(self, wardVO):
-
         ajaxProductWardList = wardVO.query.filter_by(ward_ZoneId=wardVO.ward_ZoneId).all()
 
         return ajaxProductWardList
+
+    def findWardName(self, wardVO):
+        zoneWardList = WardVO.query.filter_by(wardId=wardVO.wardId).all()
+        return zoneWardList
+
+    def getWardList(self, wardVO):
+        wardList = WardVO.query.filter(WardVO.ward_ZoneId == wardVO.ward_ZoneId).all()
+        return wardList

@@ -9,20 +9,18 @@ class ZoneDAO:
         db.session.commit()
 
     def viewZone(self):
-        zoneList=ZoneVO.query.all()
+        zoneList = ZoneVO.query.all()
 
         return zoneList
 
-    def deleteZone(self,zoneVO):
-
+    def deleteZone(self, zoneVO):
         zoneList = ZoneVO.query.get(zoneVO.zoneId)
 
         db.session.delete(zoneList)
 
         db.session.commit()
 
-    def editZone(self,zoneVO):
-
+    def editZone(self, zoneVO):
         # zoneList = ZoneVO.query.get(zoneVO.zoneId)
 
         # zoneList = ZoneVO.query.filter_by(zoneId=zoneVO.zoneId)
@@ -31,8 +29,11 @@ class ZoneDAO:
 
         return zoneList
 
-    def updateZone(self,zoneVO):
-
+    def updateZone(self, zoneVO):
         db.session.merge(zoneVO)
 
         db.session.commit()
+
+    def getZoneName(self, zoneVO):
+        zoneList = ZoneVO.query.filter_by(zoneId=zoneVO.zoneId).all()
+        return zoneList

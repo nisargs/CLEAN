@@ -1,19 +1,19 @@
 from project import db
 from project.com.vo.StaffHeadVO import StaffHeadVO
-from project.com.vo.ZoneVO import ZoneVO
 from project.com.vo.WardVO import WardVO
+from project.com.vo.ZoneVO import ZoneVO
 
 
 class StaffHeadDAO:
 
     def insertStaffHead(self, staffheadVO):
         db.session.add(staffheadVO)
-
         db.session.commit()
 
     def viewStaffHead(self):
-
-        staffheadList = db.session.query(StaffHeadVO, WardVO, ZoneVO).join(ZoneVO, StaffHeadVO.staffhead_ZoneId == ZoneVO.zoneId).join(WardVO, StaffHeadVO.staffhead_WardId == WardVO.wardId).all()
+        staffheadList = db.session.query(StaffHeadVO, WardVO, ZoneVO).join(ZoneVO,
+                                                                           StaffHeadVO.staffhead_ZoneId == ZoneVO.zoneId).join(
+            WardVO, StaffHeadVO.staffhead_WardId == WardVO.wardId).all()
 
         return staffheadList
 
@@ -36,7 +36,6 @@ class StaffHeadDAO:
         return staffheadList
 
     def updateStaffHead(self, staffheadVO):
-
         db.session.merge(staffheadVO)
 
         db.session.commit()
@@ -46,3 +45,7 @@ class StaffHeadDAO:
     #     ajaxProductStaffHeadList = staffheadVO.query.filter_by(staffhead_ZoneId=staffheadVO.staffhead_ZoneId).all()
     #
     #     return ajaxProductStaffHeadList
+
+    def getStaffUsername(self, staffHeadVO):
+        staffheadList = StaffHeadVO.query.filter_by(staffhead_ZoneId=staffHeadVO.staffhead_ZoneId).all()
+        return staffheadList
